@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you cite this research or mathematical model, please cite it as below."
+title: "Coasean Disintegration: Cooperative Game Theory of the Firm under Autonomous Intelligence"
+authors:
+  - family-names: "Ozyavuz"
+    given-names: "Ogulcan"
+    affiliation: "DICE Venture Builder"
+version: "1.0.0"
+date-released: "2026-09-27"
+url: "https://github.com/ogulcan-ozyavuz/cooperative-game-theory-of-the-firm"
+repository-code: "https://github.com/ogulcan-ozyavuz/cooperative-game-theory-of-the-firm"
+keywords:
+  - "cooperative-game-theory"
+  - "coase"
+  - "the-nature-of-the-firm"
+  - "the-core"
+  - "bondareva-shapley-theorem"
+  - "shapley-value"
+  - "autonomous-intelligence"
+  - "transaction-costs"
+  - "organizational-economics"

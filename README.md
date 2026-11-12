@@ -18,7 +18,7 @@ In *The Nature of the Firm* (1937), Ronald Coase demonstrated that the boundary 
 
 In this paper, we reformulate the Coasean firm as a **Cooperative Transferable Utility (TU) Game** $(N, \tilde{v})$ subject to super-linear communication friction $\tau(S) = c |S|^\beta$ ($\beta > 1$). We model the arrival of autonomous artificial intelligence as an exogenous, exponential cognitive capital multiplier $A \in [1, \infty)$ that acts asymmetrically across organizational scales: it collapses transaction friction for singletons ($|S|=1$) to zero while leaving the combinatorial communication friction of large hierarchies intact. 
 
-Applying the **Bondareva-Shapley Theorem**, we formally prove the existence of a critical technological threshold $A^*$. For all $A > A^*$, the **Core of the firm becomes completely empty ($\mathcal{C} = \emptyset$)**. In this regime, no compensation schedule can simultaneously satisfy firm solvency and individual rationality. We further demonstrate that internal wage compression (Frank, 1984) drives an expanding wedge between an agent’s rising Shapley value and their corporate wage, triggering an **Adverse Selection Unraveling Spiral**. We conclude that modern corporate white-collar layoffs represent a structural phase transition: the Coasean firm is dissolving into autonomous, high-leverage atomic producers.
+Applying the **Bondareva-Shapley Theorem**, we formally prove that whenever the firm absorbs AI gains less efficiently than an autonomous producer ($\eta\gamma < 1$), there exists a finite critical technological threshold $A^*$. For all $A > A^*$, the **Core of the firm becomes completely empty ($\mathcal{C} = \emptyset$)**. In this regime, no compensation schedule can simultaneously satisfy firm solvency and individual rationality. We further demonstrate that internal wage compression (Frank, 1984) drives an expanding wedge between an agent’s rising Shapley value and their corporate wage, triggering an **Adverse Selection Unraveling Spiral**. We conclude that modern corporate white-collar layoffs represent a structural phase transition: the Coasean firm is dissolving into autonomous, high-leverage atomic producers.
 
 **Keywords:** Ronald Coase, The Nature of the Firm, Cooperative Game Theory, The Core, Bondareva-Shapley Theorem, Shapley Value, Artificial Intelligence, Transaction Costs, Organizational Economics.  
 **JEL Codes:** D21, D23, C71, L22, O33.
@@ -40,7 +40,7 @@ Applying the **Bondareva-Shapley Theorem**, we formally prove the existence of a
    - [4.1 Formal Definitions](#41-formal-definitions)
    - [4.2 Application of the Bondareva-Shapley Theorem](#42-application-of-the-bondareva-shapley-theorem)
    - [4.3 The Core Emptiness Threshold (Theorem 1)](#43-the-core-emptiness-threshold-theorem-1)
-   - [4.4 The Collapse of the Optimal Coasean Firm Size (Corollary 1.1)](#44-the-collapse-of-the-optimal-coasean-firm-size-corollary-11)
+   - [4.4 The Collapse of the Coasean Firm Boundary (Corollary 1.1)](#44-the-collapse-of-the-coasean-firm-boundary-corollary-11)
 5. [Microeconomic Dynamics: Shapley Value vs. Wage Compression](#5-microeconomic-dynamics-shapley-value-vs-wage-compression)
    - [5.1 The Shapley Value under AI Leverage](#51-the-shapley-value-under-ai-leverage)
    - [5.2 Institutional Wage Compression](#52-institutional-wage-compression)
@@ -118,15 +118,15 @@ $$\binom{|S|}{2} = \frac{|S|(|S|-1)}{2} = \Theta(|S|^2)$$
 
 Under Brooks' Law (1975) and Williamson’s governance friction (1975, 1985), coordination, alignment, meeting overhead, agency monitoring, and rent-seeking scale super-linearly with coalition size:
 
-$$\tau(S) = c \cdot |S|^\beta$$
+$$\tau(S) = \begin{cases} c \cdot |S|^\beta, & |S| \ge 2 \\ 0, & |S| = 1 \end{cases}$$
 
 where:
 * $c > 0$ represents the firm's bureaucratic friction coefficient (approval tiers, compliance protocols, political gridlock).
 * $\beta > 1$ is the organizational diseconomy elasticity parameter (typically $\beta \approx 2$ due to pairwise link expansion).
 
-For an isolated agent (a singleton coalition $S = \{i\}$), coordination friction is identically zero:
+For an isolated agent (a singleton coalition $S = \{i\}$) there are no communication channels ($\binom{1}{2} = 0$), so coordination friction is identically zero:
 
-$$\tau(\{i\}) = c \cdot 1^\beta = c \approx 0 \quad (\text{frictionless autonomy})$$
+$$\tau(\{i\}) = 0 \quad (\text{frictionless autonomy})$$
 
 ### 2.4 Net Characteristic Function
 
@@ -134,21 +134,21 @@ The net distributable economic surplus of any coalition $S \subseteq N$ is:
 
 $$\tilde{v}(S) = \max \{ 0, \, v(S) - \tau(S) \} = \max \{ 0, \, v(S) - c |S|^\beta \}$$
 
-For the Grand Coalition $N$:
+For the Grand Coalition $N$ (assuming solvency, $v(N) \ge c n^\beta$):
 
 $$\tilde{v}(N) = v(N) - c n^\beta$$
 
 ### 2.5 The Pre-AI Industrial Equilibrium: Non-Empty Core
 
-In the pre-AI industrial paradigm, physical capital, regulatory licenses, and enterprise distribution were monopolized by the firm. An isolated agent had virtually zero standalone market output:
+In the pre-AI industrial paradigm, physical capital, regulatory licenses, and enterprise distribution were monopolized by the firm. An isolated agent could produce only their baseline capacity $f_i$, while the integrated firm multiplied it by the synergy $\gamma$. Normalizing the pre-AI technology level to $A = 1$ and taking symmetric agents ($f_i = f_0$), the firm out-produced its atomized members despite massive internal bureaucracy ($c n^\beta \gg 0$):
 
-$$v(\{i\}) \approx 0 \implies \tilde{v}(\{i\}) = 0, \quad \forall i \in N$$
+$$\tilde{v}(N) = \gamma n f_0 - c n^\beta \ \ge\ \sum_{i=1}^n \tilde{v}(\{i\}) = n f_0 \quad \iff \quad \gamma - 1 \ge \frac{c\, n^{\beta-1}}{f_0} \qquad (\text{S}_0)$$
 
-Although internal bureaucracy was massive ($c n^\beta \gg 0$), the physical economies of scale dominated:
+Condition $(\text{S}_0)$ is necessary for a non-empty Core but not sufficient: the Bondareva-Shapley Theorem requires the inequality for *every* balanced collection, not only for the singletons. Because physical capital could not be carried out of the firm, we additionally assume that no coalition (spinoff) out-earned the firm per capita:
 
-$$\tilde{v}(N) = v(N) - c n^\beta \gg \sum_{i=1}^n \tilde{v}(\{i\}) = 0$$
+$$\frac{\tilde{v}(S)}{|S|} \le \frac{\tilde{v}(N)}{n}, \quad \forall S \subseteq N, \ S \neq \emptyset \qquad (\text{A}_0)$$
 
-Under these parameters, the game was balanced, and by the Bondareva-Shapley Theorem, the Core was non-empty ($\mathcal{C} \neq \emptyset$). The corporate manor was coalitionally stable.
+$(\text{A}_0)$ contains $(\text{S}_0)$ as the case $|S| = 1$. Under $(\text{A}_0)$, the equal split $x_i = \tilde{v}(N)/n$ satisfies $\sum_{i \in S} x_i = |S|\,\tilde{v}(N)/n \ge \tilde{v}(S)$ for every coalition $S$, so it lies in the Core and $\mathcal{C} \neq \emptyset$. (For symmetric games, $(\text{A}_0)$ is also necessary: the Core is convex and permutation-invariant, so whenever it is non-empty it contains the equal split.) The corporate manor was coalitionally stable.
 
 ---
 
@@ -163,7 +163,7 @@ The foundational structural asymmetry of cognitive automation is that **$A$ does
 ### 3.1 Asymmetric Scaling: Singleton vs. Grand Coalition
 
 #### Proposition 1 (Singleton Leverage Explosion)
-*For a singleton agent $S = \{i\}$ (or micro-coalition $|S| \le k$ with $k \ll n$), internal managerial friction is absent ($\tau(\{i\}) \approx 0$). Autonomous agent swarms act as a pure, unencumbered multiplier on individual talent $f_i$:*
+*For a singleton agent $S = \{i\}$, internal managerial friction is absent ($\tau(\{i\}) = 0$). Autonomous agent swarms act as a pure, unencumbered multiplier on individual talent $f_i$:*
 
 $$\tilde{v}_A(\{i\}) = A \cdot f_i$$
 
@@ -171,12 +171,12 @@ $$\tilde{v}_A(\{i\}) = A \cdot f_i$$
 An isolated builder directly commands deterministic execution pipelines (autonomous code generation, synthesis, design, retrieval). Because there are no interpersonal communication channels ($\binom{1}{2} = 0$), there is no managerial agency loss. Hence, $\tau(\{i\}) = 0$, yielding $\tilde{v}_A(\{i\}) = v_A(\{i\}) = A f_i$. $\blacksquare$
 
 #### Proposition 2 (Corporate Absorption Drag)
-*For the Grand Coalition $N$, the technology multiplier is attenuated by an institutional absorption discount $\eta < 1$, while the quadratic coordination overhead $c n^\beta$ remains invariant:*
+*For the Grand Coalition $N$, the firm realizes only a fraction $\eta \in (0, 1)$ of the AI productivity uplift $(A - 1)$, while the super-linear coordination overhead $c n^\beta$ remains invariant:*
 
-$$\tilde{v}_A(N) = \eta A \cdot F(N) - c n^\beta = \eta A \gamma \sum_{i=1}^n f_i - c n^\beta$$
+$$\tilde{v}_A(N) = \big[1 + \eta (A - 1)\big] F(N) - c n^\beta = \gamma \big[1 + \eta (A - 1)\big] \sum_{i=1}^n f_i - c n^\beta$$
 
 *Proof:*  
-Enterprise deployment of autonomous intelligence requires multi-layered legal compliance, vendor risk reviews, committee alignment, security guardrails, and middle-management consensus. This institutional friction discounts raw model productivity by factor $\eta \in (0, 1)$. Furthermore, because $n$ human agents must still be governed, compensated, and politically reconciled, the pairwise communication graph $K_n$ retains its super-linear friction $c n^\beta$. $\blacksquare$
+Enterprise deployment of autonomous intelligence requires multi-layered legal compliance, vendor risk reviews, committee alignment, security guardrails, and middle-management consensus. This institutional friction discounts the AI-driven productivity gain by factor $\eta \in (0, 1)$: of the potential uplift $(A - 1) F(N)$, only $\eta (A - 1) F(N)$ is realized. The discount applies to the increment, not to pre-existing output, so at $A = 1$ the expression reduces to the pre-AI value $\gamma f(N) - c n^\beta$ of Section 2.5. Furthermore, because $n$ human agents must still be governed, compensated, and politically reconciled, the pairwise communication graph $K_n$ retains its super-linear friction $c n^\beta$. $\blacksquare$
 
 ---
 
@@ -208,7 +208,7 @@ A collection of non-empty coalitions $\mathcal{B} \subseteq 2^N \setminus \{\emp
 $$\sum_{S \in \mathcal{B} : i \in S} \lambda_S = 1, \quad \forall i \in N$$
 
 **Theorem (Bondareva 1963; Shapley 1967):**  
-*A TU cooperative game $(N, v)$ has a non-empty Core ($\mathcal{C} \neq \emptyset$) if and only if for every balanced collection $(\mathcal{B}, \lambda)$:*
+*A TU cooperative game $(N, \tilde{v})$ has a non-empty Core ($\mathcal{C} \neq \emptyset$) if and only if for every balanced collection $(\mathcal{B}, \lambda)$:*
 
 $$\sum_{S \in \mathcal{B}} \lambda_S \tilde{v}(S) \le \tilde{v}(N)$$
 
@@ -227,13 +227,13 @@ Under Bondareva-Shapley, a necessary condition for Core non-emptiness is:
 $$\sum_{i=1}^n \tilde{v}_A(\{i\}) \le \tilde{v}_A(N)$$
 
 **Theorem 1 (Coasean Disintegration & Core Emptiness):**  
-*Assume agents have symmetric baseline talent endowments $f_i = f_0 > 0$.*
-1. *If $\eta \gamma \le 1$ (institutional inertia weakly dominates organizational synergy), the Core is empty for all $A \ge 1$:*
-   $$\mathcal{C}(N, \tilde{v}_A) = \emptyset, \quad \forall A \ge 1$$
-2. *If $\eta \gamma > 1$ (net positive corporate synergy exists), there exists a finite critical technology threshold:*
-   $$A^* \equiv \frac{c n^\beta}{n f_0 (\eta \gamma - 1)}$$
+*Assume agents have symmetric baseline talent endowments $f_i = f_0 > 0$, and let $\kappa \equiv c\, n^{\beta - 1} / f_0$ denote per-capita coordination friction measured in units of baseline talent.*
+1. *If $\eta \gamma < 1$ (institutional absorption drag dominates organizational synergy on the AI margin), there exists a finite critical technology threshold:*
+   $$A^* \equiv \frac{\gamma (1 - \eta) - \kappa}{1 - \eta \gamma} = \frac{\gamma (1 - \eta) - c\, n^{\beta - 1} / f_0}{1 - \eta \gamma}$$
    *such that for all $A > A^*$, the Core of the firm is empty:*
    $$\mathcal{C}(N, \tilde{v}_A) = \emptyset$$
+   *Moreover, $A^* \ge 1$ if and only if the pre-AI stability condition $(\text{S}_0)$ holds: every firm that passed the singleton test before AI fails it at a finite level of $A$.*
+2. *If $\eta \gamma \ge 1$ (the firm absorbs AI gains at least as well as an autonomous producer), the singleton test yields no threshold: if it holds at $A = 1$, it holds for all $A \ge 1$, and AI alone cannot empty the Core through singleton defection.*
 
 *Proof:*  
 From the singleton balancedness condition:
@@ -242,29 +242,22 @@ $$\sum_{i=1}^n \tilde{v}_A(\{i\}) = \sum_{i=1}^n A f_i = n A f_0$$
 
 The net value of the Grand Coalition is:
 
-$$\tilde{v}_A(N) = \eta A \gamma (n f_0) - c n^\beta$$
+$$\tilde{v}_A(N) = \gamma n f_0 \big[1 + \eta (A - 1)\big] - c n^\beta$$
 
 Core non-emptiness requires:
 
-$$n A f_0 \le \eta A \gamma n f_0 - c n^\beta$$
+$$n A f_0 \le \gamma n f_0 \big[1 + \eta (A - 1)\big] - c n^\beta$$
 
-Rearranging terms by isolating the cognitive capital multiplier $A$:
+Dividing by $n f_0 > 0$ and collecting the terms in the cognitive capital multiplier $A$:
 
-$$c n^\beta \le A \cdot n f_0 (\eta \gamma - 1)$$
+$$A (1 - \eta \gamma) \le \gamma (1 - \eta) - \kappa \qquad (\star)$$
 
-**Case 1 ($\eta \gamma \le 1$):**  
-If $\eta \gamma \le 1$, the term $(\eta \gamma - 1) \le 0$. Consequently:
+**Case 1 ($\eta \gamma < 1$):**  
+Since $1 - \eta \gamma > 0$, we divide both sides of $(\star)$ by it:
 
-$$A \cdot n f_0 (\eta \gamma - 1) \le 0 < c n^\beta$$
+$$A \le \frac{\gamma (1 - \eta) - \kappa}{1 - \eta \gamma} \equiv A^*$$
 
-Because $c > 0$ and $n \ge 2$, the inequality is violated for all $A \ge 1$. The Core is unconditionally empty.
-
-**Case 2 ($\eta \gamma > 1$):**  
-If $\eta \gamma > 1$, we divide both sides by $n f_0 (\eta \gamma - 1) > 0$:
-
-$$A \le \frac{c n^\beta}{n f_0 (\eta \gamma - 1)} \equiv A^*$$
-
-Thus, for any technological state $A > A^*$, the inequality is strictly reversed:
+Thus, for any technological state $A > A^*$, inequality $(\star)$ is strictly violated:
 
 $$\sum_{i=1}^n \tilde{v}_A(\{i\}) > \tilde{v}_A(N)$$
 
@@ -276,29 +269,42 @@ This directly contradicts budget balance ($\sum_{i \in N} x_i = \tilde{v}_A(N)$)
 
 $$\mathcal{C}(N, \tilde{v}_A) = \emptyset$$
 
+For the location of the threshold, expand:
+
+$$(A^* - 1)(1 - \eta \gamma) = \gamma (1 - \eta) - \kappa - (1 - \eta \gamma) = \gamma - 1 - \kappa$$
+
+Since $1 - \eta \gamma > 0$, $A^* \ge 1 \iff \gamma - 1 \ge \kappa$, which is exactly $(\text{S}_0)$.
+
+**Case 2 ($\eta \gamma \ge 1$):**  
+The coefficient $(1 - \eta \gamma) \le 0$, so the left-hand side of $(\star)$ is non-increasing in $A$ while the right-hand side does not depend on $A$. If $(\star)$ holds at $A = 1$, it therefore holds for all $A \ge 1$.
+
 $\blacksquare$
+
+**Remark (Large firms break first).** For $\eta \gamma < 1$,
+
+$$\frac{\partial A^*}{\partial n} = -\frac{c (\beta - 1) n^{\beta - 2}}{f_0 (1 - \eta \gamma)} < 0$$
+
+The larger the hierarchy, the lower the technology level at which its Core empties.
 
 ---
 
-### 4.4 The Collapse of the Optimal Coasean Firm Size (Corollary 1.1)
+### 4.4 The Collapse of the Coasean Firm Boundary (Corollary 1.1)
 
-Coase defined the optimal firm size $n^*$ as the point maximizing net organizational surplus per capita.
+Coase located the boundary of the firm where internal organization stops paying for itself. In the present game, that boundary is the largest headcount at which the firm still passes the singleton test $(\star)$.
 
-**Corollary 1.1 (Optimal Firm Size Collapse):**  
-*Let the firm choose headcount $n$ to maximize average net surplus:*
+**Corollary 1.1 (Shrinking Coasean Boundary):**  
+*Let $\eta \gamma < 1$. The Core of an $n$-agent firm can be non-empty only if $n \le \bar{n}(A)$, where:*
 
-$$n^*(A) = \arg\max_{n \ge 1} \left[ \frac{\eta A \gamma n f_0 - c n^\beta}{n} \right] = \arg\max_{n \ge 1} \left[ \eta A \gamma f_0 - c n^{\beta - 1} \right]$$
+$$\bar{n}(A) = \left[ \frac{f_0}{c} \Big( \gamma (1 - \eta) - A (1 - \eta \gamma) \Big) \right]^{\frac{1}{\beta - 1}}$$
 
-*Since $\beta > 1$ and $c > 0$, the objective function is strictly decreasing in $n$ for all $n \ge 1$. Thus:*
-
-$$n^*(A) = 1, \quad \forall A \ge 1$$
+*with $\bar{n}(A) \equiv 0$ once the bracket is non-positive. $\bar{n}(A)$ is strictly decreasing in $A$, falls below 2 for $A > A^*\big|_{n=2}$, and vanishes at $A = \gamma (1 - \eta)/(1 - \eta \gamma)$. Beyond $A^*\big|_{n=2}$, no firm with two or more members can have a non-empty Core: the Coasean boundary collapses to the autonomous producer, $n = 1$.*
 
 *Proof:*  
-The derivative with respect to $n$ is:
+Substituting $\kappa = c\, n^{\beta - 1} / f_0$, inequality $(\star)$ reads $c\, n^{\beta - 1} / f_0 \le \gamma (1 - \eta) - A (1 - \eta \gamma)$. Because $\beta > 1$, $n^{\beta - 1}$ is strictly increasing in $n$, so this is equivalent to $n \le \bar{n}(A)$. Where the bracket is positive:
 
-$$\frac{\partial}{\partial n} \left( \eta A \gamma f_0 - c n^{\beta - 1} \right) = -c (\beta - 1) n^{\beta - 2} < 0$$
+$$\frac{d \bar{n}}{d A} = -\frac{(1 - \eta \gamma)\, \bar{n}(A)}{(\beta - 1) \big( \gamma (1 - \eta) - A (1 - \eta \gamma) \big)} < 0$$
 
-Because the marginal returns to headcount are strictly negative due to super-linear communication overhead, the unconstrained optimal organizational size collapses to the singleton boundary $n^* = 1$. $\blacksquare$
+Finally, $\bar{n}(A) < 2$ holds exactly when $(\star)$ fails at $n = 2$, i.e., by Theorem 1, when $A > A^*\big|_{n=2}$. $\blacksquare$
 
 ---
 
@@ -356,7 +362,7 @@ Since $\theta \ll 1$, **technological progress monotonically expands the Defecti
 *When $A > A^*$, the firm enters an irreversible unraveling cascade:*
 1. *The top tier of producers $S_{\text{exit}} = \{i \in N : \Delta_i(A) > 0\}$ departs to operate as autonomous producers.*
 2. *The departure of $S_{\text{exit}}$ reduces gross firm output from $v_A(N)$ to $v_A(N \setminus S_{\text{exit}})$.*
-3. *Because corporate bureaucracy $\tau(N)$ cannot contract instantaneously (fixed real estate, compliance overhead, middle management), per-capita administrative cost $\frac{c (n - |S_{\text{exit}}|)^\beta}{n - |S_{\text{exit}}|}$ rises.*
+3. *Because corporate bureaucracy $\tau(N) = c n^\beta$ cannot contract instantaneously (fixed real estate, compliance overhead, middle management), the per-capita administrative cost borne by the remaining agents, $\frac{c\, n^\beta}{n - |S_{\text{exit}}|}$, rises. (If the bureaucracy could resize instantly, the per-capita cost $c (n - |S_{\text{exit}}|)^{\beta - 1}$ would instead fall, since $\beta > 1$.)*
 4. *To prevent immediate insolvency, the firm implements broad-based layoffs and salary freezes, which lowers $w_j$ for the second tier of talent.*
 5. *This triggers $\Delta_j(A) > 0$ for the remaining median producers, accelerating the liquidation of the firm.* $\blacksquare$
 
@@ -407,7 +413,7 @@ When the Core empties and workers are ejected into autonomous production:
 
 Ronald Coase began his 1937 treatise by noting that economists often treat the economic system as an organism that coordinates itself through prices, while ignoring the managerial islands where conscious direction reigns.
 
-We have demonstrated that the boundary of those managerial islands is governed by a cooperative game whose Core depends on the ratio of human communication friction to autonomous cognitive leverage. When cognitive capital $A$ crosses the threshold $A^*$, the Grand Coalition becomes coalitionally unstable.
+We have demonstrated that the boundary of those managerial islands is governed by a cooperative game whose Core depends on the ratio of human communication friction to autonomous cognitive leverage. When the firm absorbs AI gains less efficiently than an autonomous producer ($\eta\gamma < 1$) and cognitive capital $A$ crosses the threshold $A^*$, the Grand Coalition becomes coalitionally unstable.
 
 The ongoing wave of corporate downsizing is not a temporary macroeconomic aberration. It is the mathematical dissolution of the Coasean firm. As autonomous tools continue their exponential ascent, the corporate manor is yielding to the sovereign producer—a decentralized landscape of atomic builders operating at the frontier of the distribution, bearing the full weight of the market's variance, and capturing its uncapped upside.
 
